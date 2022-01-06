@@ -1,6 +1,18 @@
 def main():
-    grid = initializeGrid(8, 6)
+    grid = initializeGrid(16, 12)
     printGrid(grid)
+    newGrid = populate(grid, 0.33)
+    print("\n")
+    printGrid(newGrid)
+    zeros = 0
+    ones = 0
+    for i in range(len(newGrid)):
+        for j in range(len(newGrid[i])):
+            if newGrid[i][j] == 0:
+                zeros += 1
+            else:
+                ones += 1
+    print(f"zeros: {zeros}, ones: {ones}")
 
 ##############
 # Game Logic #
@@ -30,6 +42,21 @@ def step(grid):
             else:
                 newGrid[i][j] = 0
     return newGrid
+
+import random
+def populate(grid, ratio):
+    newGrid = [[grid[i][j] for j in range(len(grid[0]))] for i in range(len(grid))]
+    size_y = len(grid)
+    size_x = len(grid[0])
+    cells_to_live = round(size_x * size_y * ratio)
+    while cells_to_live > 0:
+        x = random.randint(0, size_x - 1)
+        y = random.randint(0, size_y - 1)
+        if newGrid[y][x] == 0:
+            newGrid[y][x] = 1
+            cells_to_live -= 1
+    return newGrid
+        
 
 ############
 # File I/O #
