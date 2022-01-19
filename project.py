@@ -4,8 +4,8 @@ from gameoflife import *
 
 def main():
     for i in range(1, 10):
-        print(f"##### Ratio {str(0.1 * i)} #####")
-        for j in range(2):
+        print(f"##### Ratio {str(round(0.1 * i, 1))} #####")
+        for j in range(1):
             grid = populate(initializeGrid(80, 60), (0.1 * i))
             alive_result = reduction(grid)
             change_result = change(grid)
@@ -14,7 +14,7 @@ def main():
             with open(f"data/{str(10 * i)}.data", "a") as file:
                 file.write("{" + f"'alive': {alive_result}, 'change': {change_result}, 'repetition': {repetition_result}" + "}\n")
         
-            print(str(50 - j))
+            print(str(2 - j))
 
 # Funktion zum Testen der Reduktion
 def reduction(grid, generations=100):

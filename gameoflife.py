@@ -1,7 +1,7 @@
 def main():
     grid = initializeGrid(16, 12)
     printGrid(grid)
-    newGrid = populate(grid, 0.33)
+    newGrid = populate(grid, 0.33, 10)
     print("\n")
     printGrid(newGrid)
     zeros = 0
@@ -50,7 +50,8 @@ def copyGrid(grid):
 import random
 
 # Returns a new grid with the given x and y dimensions and a randomized population of cells within a given ratio
-def populate(grid, ratio, population_state=1):
+def populate(grid, ratio, seed=random.random()):
+    random.seed(seed)
     newGrid = copyGrid(grid)
     size_y = len(grid)
     size_x = len(grid[0])
