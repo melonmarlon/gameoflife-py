@@ -1,7 +1,7 @@
 def main():
     grid = initializeGrid(16, 12)
     printGrid(grid)
-    newGrid = populate(grid, 0.33, 10)
+    (_, newGrid) = populate(grid, 0.33)
     print("\n")
     printGrid(newGrid)
     zeros = 0
@@ -62,7 +62,7 @@ def populate(grid, ratio, seed=random.random()):
         if newGrid[y][x] == 0:
             newGrid[y][x] = 1
             cells_to_live -= 1
-    return newGrid
+    return (seed, newGrid)
         
 ############
 # File I/O #
