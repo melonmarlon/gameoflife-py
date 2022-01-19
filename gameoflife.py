@@ -30,7 +30,7 @@ def initializeGrid(x, y, fill=0):
 
 # Returns a new grid that is one step further than the given grid after the rules of conways game of life have been applied
 def step(grid):
-    newGrid = [[grid[i][j] for j in range(len(grid[0]))] for i in range(len(grid))]
+    newGrid = copyGrid(grid)
     for i in range(len(grid)):
         for j in range(len(grid[i])):
             neighbors = 0 - grid[i][j]
@@ -43,9 +43,15 @@ def step(grid):
                 newGrid[i][j] = 0
     return newGrid
 
+def copyGrid(grid):
+    return [[grid[i][j] for j in range(len(grid[0]))] for i in range(len(grid))]
+
+# Python Module for randomization
 import random
-def populate(grid, ratio):
-    newGrid = [[grid[i][j] for j in range(len(grid[0]))] for i in range(len(grid))]
+
+# Returns a new grid with the given x and y dimensions and a randomized population of cells within a given ratio
+def populate(grid, ratio, population_state=1):
+    newGrid = copyGrid(grid)
     size_y = len(grid)
     size_x = len(grid[0])
     cells_to_live = round(size_x * size_y * ratio)
@@ -57,7 +63,6 @@ def populate(grid, ratio):
             cells_to_live -= 1
     return newGrid
         
-
 ############
 # File I/O #
 ############
@@ -84,8 +89,6 @@ def readGrid(fileName):
 def printGrid(grid):
     for i in grid:
         print(i)
-
-# PROJEKT: Zufällige Startkonfiguration (mit verschiedenen Anteilen an lebenden Zellen); Schritte bis zum regelmäßigen (periodischen) Verhalten
 
 if __name__ == "__main__":
     main()
