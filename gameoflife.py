@@ -50,7 +50,9 @@ def copyGrid(grid):
 import random
 
 # Returns a new grid with the given x and y dimensions and a randomized population of cells within a given ratio
-def populate(grid, ratio, seed=random.random()):
+def populate(grid, ratio, seed=None):
+    if not seed:
+        seed = random.random()
     random.seed(seed)
     newGrid = copyGrid(grid)
     size_y = len(grid)
