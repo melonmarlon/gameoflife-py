@@ -14,7 +14,7 @@ def main():
             alive_result = alive(grid)
             repetition_result = repetition(grid)
 
-            with open(f"data2/{5 * i}.data", "a") as file:
+            with open(f"data/{5 * i}.data", "a") as file:
                 file.write(json.dumps({"seed": seed, "ratio": ratio, "alive": alive_result, "repetition": repetition_result}) + "\n")
             
             generations += 1

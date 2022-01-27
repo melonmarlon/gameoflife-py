@@ -1,25 +1,9 @@
-def main():
-    grid = initializeGrid(16, 12)
-    printGrid(grid)
-    (_, newGrid) = populate(grid, 0.33)
-    print("\n")
-    printGrid(newGrid)
-    zeros = 0
-    ones = 0
-    for i in range(len(newGrid)):
-        for j in range(len(newGrid[i])):
-            if newGrid[i][j] == 0:
-                zeros += 1
-            else:
-                ones += 1
-    print(f"zeros: {zeros}, ones: {ones}")
-
 ##############
 # Game Logic #
 ##############
 
 # Returns a 2D list with the given x and y dimensions and optional fill (defaults to 0)
-def initializeGrid(x, y, fill=0):
+def initializeGrid(x, y):
     grid = []
     for i in range(y):
         horizontalLine = []
@@ -92,6 +76,3 @@ def readGrid(fileName):
 def printGrid(grid):
     for i in grid:
         print(i)
-
-if __name__ == "__main__":
-    main()
