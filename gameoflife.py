@@ -8,7 +8,7 @@ def initializeGrid(x, y):
     for i in range(y):
         horizontalLine = []
         for j in range(x):
-            horizontalLine.append(fill)
+            horizontalLine.append(0)
         grid.append(horizontalLine)
     return grid
 

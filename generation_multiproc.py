@@ -5,7 +5,7 @@ from multiprocessing import Process
 import time
 
 GENERATIONS = 100
-N = 4
+N = 6
 
 def main():
     for i in range(1, 20):
@@ -20,15 +20,15 @@ def main():
 
 def compute(ratio, i, procnum):
     generations = 0
-    while(generations < GENERATIONS // N):
+    while(generations < round(GENERATIONS / N)):
         generations += 1
         print(f"Process {procnum} is at Generation {generations}")
 
-        (seed, grid) = populate(initializeGrid(24, 18), ratio)
+        (seed, grid) = populate(initializeGrid(80, 60), ratio)
         alive_result = alive(grid)
         repetition_result = repetition(grid)
 
-        with open(f"data/{5 * i}.data", "a") as file:
+        with open(f"data2/{5 * i}.data", "a") as file:
             file.write(json.dumps({"seed": seed, "ratio": ratio, "alive": alive_result, "repetition": repetition_result}) + "\n")
     print(f"Process {procnum} is finished!")
 
