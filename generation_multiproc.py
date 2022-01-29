@@ -1,11 +1,10 @@
 from gameoflife import *
-import random
 import json
 from multiprocessing import Process
 import time
 
-GENERATIONS = 100
-N = 6
+GENERATIONS = 80
+N = 4
 
 def main():
     for i in range(1, 20):
@@ -28,7 +27,7 @@ def compute(ratio, i, procnum):
         alive_result = alive(grid)
         repetition_result = repetition(grid)
 
-        with open(f"data2/{5 * i}.data", "a") as file:
+        with open(f"data/{5 * i}.data", "a") as file:
             file.write(json.dumps({"seed": seed, "ratio": ratio, "alive": alive_result, "repetition": repetition_result}) + "\n")
     print(f"Process {procnum} is finished!")
 

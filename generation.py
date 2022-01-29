@@ -1,14 +1,13 @@
 from gameoflife import *
-import random
 import json
-import threading
-import time
+
+GENERATIONS = 100
 
 def main():
     for i in range(1, 20):
         print(f"Ratio: {5 * i / 100}")
         generations = 0
-        while(generations < 100):
+        while(generations < GENERATIONS):
             ratio = 5 * i / 100
             (seed, grid) = populate(initializeGrid(80, 60), ratio)
             alive_result = alive(grid)
