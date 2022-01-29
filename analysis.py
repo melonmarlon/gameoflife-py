@@ -30,15 +30,18 @@ for i in range(1, 20):
     repetitions.append(repetition)
 
     plt.figure()
+
     plt.bar([x + 1 for x in range(alive_length)], alive)
     plt.title(f"Alive cells Ratio: {i * 5}%")
     plt.xlabel("Generations [n]")
     plt.ylabel("Alive cells [n]")
-    plt.xticks([x])
+    plt.xticks([x * 10 - 5 for x in range(1, 11)])
 
-    plt.savefig(f"graphs/{i * 5}.alive.png")
+    plt.savefig(f"graphs/alive_cells-{i * 5}_ratio.png")
+    plt.close()
 
 plt.figure()
+
 plt.bar([x * 5 for x in range(1, 20)], [y[0] for y in repetitions], 4.5)
 plt.title("Average generations until periodical behaviour")
 plt.xlabel("Ratio [%]")
@@ -46,3 +49,15 @@ plt.ylabel("Average generations until periodical behaviour [n]")
 plt.xticks([x * 5 for x in range(1, 20)])
 
 plt.savefig("graphs/period_start-ratio.png")
+plt.close()
+
+plt.figure()
+
+plt.bar([x * 5 for x in range(1, 20)], [y[1] for y in repetitions], 4.5)
+plt.title("Average length of periodical behaviour")
+plt.xlabel("Ratio [%]")
+plt.ylabel("Average length of periodical behaviour [n]")
+plt.xticks([x * 5 for x in range(1, 20)])
+
+plt.savefig("graphs/period_length-ratio.png")
+plt.close()
