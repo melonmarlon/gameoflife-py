@@ -1,6 +1,7 @@
 from gameoflife import *
 import json
 
+# Anzahl der Generationen pro Verhältnis
 GENERATIONS = 100
 
 def main():
